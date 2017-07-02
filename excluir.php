@@ -1,7 +1,7 @@
 <?php
 
-use test\app\LDAPConnection;
-use test\app\LDAPGateway;
+use app\LDAPConnection;
+use app\LDAPGateway;
 
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);

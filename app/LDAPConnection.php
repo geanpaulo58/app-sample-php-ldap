@@ -1,5 +1,5 @@
 <?php
-namespace test\app;
+namespace app;
 
 class LDAPConnection
 {

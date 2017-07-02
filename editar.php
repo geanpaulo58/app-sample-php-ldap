@@ -1,7 +1,7 @@
 <?php
 
-use test\app\LDAPConnection;
-use test\app\LDAPGateway;
+use app\LDAPConnection;
+use app\LDAPGateway;
 
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
@@ -23,11 +23,6 @@ if ($_GET['uid']) {
         $search = new LDAPGateway();
         $req = $search->read($ldap, $base_dn, $filter, $attributes);
         
-        if($req){
-            header('Location: index.php');
-            exit();
-        }
-        
         
     } catch (Exception $e) {
         
@@ -43,7 +38,11 @@ if ($_GET['uid']) {
 <meta charset="UTF-8">
 <title>Editar Usuário</title>
 
-<link href="public/assets/css/ldap.css" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -175,7 +174,12 @@ if ($_POST) {
         $ldap = LDAPConnection::getConnection()->connection();
         
         $update = new LDAPGateway();
-        $update->update($ldap, $dn, $entry);
+        $req = $update->update($ldap, $dn, $entry);
+        
+        if($req){
+            header('Location: index.php');
+            exit();
+        }
         
     } catch (Exception $e) {
         

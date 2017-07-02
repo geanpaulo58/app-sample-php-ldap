@@ -5,8 +5,8 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
 
-use test\app\LDAPConnection;
-use test\app\LDAPGateway;
+use app\LDAPConnection;
+use app\LDAPGateway;
 
 require 'bootstrap/autoload.php';
 require 'app/utils/helpers.php';
